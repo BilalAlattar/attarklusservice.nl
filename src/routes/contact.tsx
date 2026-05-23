@@ -30,7 +30,7 @@ function ContactPage() {
     { icon: Phone, label: t("footer.phone"), v: "+31 6 1234 5678" },
     { icon: Mail, label: t("footer.email"), v: "sale@attarklusservice.nl" },
     { icon: MapPin, label: t("footer.address"), v: "Hoofdstraat 12, 1011 AB Amsterdam" },
-    { icon: Clock, label: "24/7", v: "Spoed Service" },
+    { icon: Clock, label: t("contact.emergencyLabel"), v: t("contact.emergencyValue") },
   ];
 
   return (

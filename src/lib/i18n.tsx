@@ -61,6 +61,8 @@ export const translations: Dict = {
     nl: "Premium onderhoud, renovatie en interieurwerk met een professionele aanpak en heldere afspraken.",
     ar: "صيانة وتجديد داخلي احترافية مع نهج شفاف ومواعيد دقيقة.",
   },
+  "contact.emergencyLabel": { nl: "24/7", ar: "24/7" },
+  "contact.emergencyValue": { nl: "Spoed Service", ar: "خدمة الطوارئ" },
   "footer.powered": { nl: "Powerd by", ar: "Powerd by" },
   "footer.trust": { nl: "Trustbe Geverifieerd", ar: "موثق عبر Trustbe" },
   "footer.kvk": { nl: "KVK-nummer", ar: "رقم KVK" },
