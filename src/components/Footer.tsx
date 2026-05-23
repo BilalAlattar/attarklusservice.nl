@@ -96,9 +96,6 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="mt-auto pt-10 text-xs text-white/40">
-              <span className="text-orange font-semibold">{t("footer.powered")}</span>
-            </div>
           </motion.div>
 
           {/* RIGHT */}
@@ -155,7 +152,9 @@ export function Footer() {
 
         <div className="border-t border-white/10 mt-12 pt-6 text-xs text-white/40 flex flex-col lg:flex-row items-center justify-between gap-3">
           <span>© {new Date().getFullYear()} Attar Klusservice. All rights reserved.</span>
-          <span className="text-center text-white/70">{t("footer.powered")}</span>
+          <span className="text-center text-white/70">
+            {t("footer.powered")} <a href="https://attarklusservice.nl" target="_blank" rel="noreferrer" className="text-orange font-semibold hover:underline">Attarklusservice.nl</a>
+          </span>
           <span>KVK 42052229 · BTW NL869487371B01</span>
         </div>
       </div>

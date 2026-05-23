@@ -56,8 +56,12 @@ export const translations: Dict = {
     nl: "Plan een vrijblijvende kennismaking.",
     ar: "احجز موعداً مجانياً.",
   },
-
-  "footer.powered": { nl: "Powerd by اسم الشركة", ar: "Powerd by اسم الشركة" },
+  "contact.company": { nl: "Company", ar: "الشركة" },
+  "contact.companyDescription": {
+    nl: "Premium onderhoud, renovatie en interieurwerk met een professionele aanpak en heldere afspraken.",
+    ar: "صيانة وتجديد داخلي احترافية مع نهج شفاف ومواعيد دقيقة.",
+  },
+  "footer.powered": { nl: "Powerd by", ar: "Powerd by" },
   "footer.trust": { nl: "Trustbe Geverifieerd", ar: "موثق عبر Trustbe" },
   "footer.kvk": { nl: "KVK-nummer", ar: "رقم KVK" },
   "footer.address": { nl: "Adres", ar: "العنوان" },

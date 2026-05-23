@@ -54,10 +54,10 @@ function ContactPage() {
             className="space-y-8"
           >
             <div className="rounded-[2rem] bg-black text-white p-8 shadow-elegant">
-              <div className="text-orange text-xs uppercase tracking-[0.35em] mb-4">Company</div>
-              <h2 className="text-3xl font-display font-bold mb-3">Attar Klusservice</h2>
+              <div className="text-orange text-xs uppercase tracking-[0.35em] mb-4">{t("contact.company")}</div>
+              <h2 className="text-3xl font-display font-bold mb-3">Attarklusservice.nl</h2>
               <p className="text-sm text-white/70 leading-relaxed">
-                Premium onderhoud, renovatie en interieurwerk met een professionele aanpak en heldere afspraken.
+                {t("contact.companyDescription")}
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-3xl bg-white/5 p-5">
