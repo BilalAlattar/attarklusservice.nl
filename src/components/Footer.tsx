@@ -47,12 +47,14 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-orange shrink-0" />
-                <a href="tel:+31612345678" className="hover:text-orange">+31 6 1234 5678</a>
+                <a href="tel:+31612345678" className="hover:text-orange">
+                  <span dir="ltr" className="inline-block">+31 6 1234 5678</span>
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-orange shrink-0" />
                 <a href="mailto:Sales@attarklusservice.nl" className="hover:text-orange">
-                  Sales@attarklusservice.nl
+                  <span dir="ltr" className="inline-block">Sales@attarklusservice.nl</span>
                 </a>
               </li>
             </ul>
@@ -95,7 +97,7 @@ export function Footer() {
             </div>
 
             <div className="mt-auto pt-10 text-xs text-white/40">
-              {t("footer.powered")} <span className="text-orange font-semibold">Lovable Studio</span>
+              <span className="text-orange font-semibold">{t("footer.powered")}</span>
             </div>
           </motion.div>
 
@@ -151,8 +153,9 @@ export function Footer() {
           </motion.div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-6 text-xs text-white/40 flex flex-wrap justify-between gap-3">
+        <div className="border-t border-white/10 mt-12 pt-6 text-xs text-white/40 flex flex-col lg:flex-row items-center justify-between gap-3">
           <span>© {new Date().getFullYear()} Attar Klusservice. All rights reserved.</span>
+          <span className="text-center text-white/70">{t("footer.powered")}</span>
           <span>KVK 42052229 · BTW NL869487371B01</span>
         </div>
       </div>

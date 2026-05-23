@@ -31,14 +31,14 @@ export const translations: Dict = {
   "services.more": { nl: "Meer Diensten Bekijken", ar: "عرض المزيد من الخدمات" },
   "services.less": { nl: "Minder Tonen", ar: "عرض أقل" },
 
-  "about.title": { nl: "Vakmanschap & Vertrouwen", ar: "الحرفية والثقة" },
+  "about.title": { nl: "Meer dan 7 jaar vakmanschap en persoonlijke service", ar: "أكثر من 7 سنوات خبرة وحرفية شخصية" },
   "about.lead": {
-    nl: "Attar Klusservice staat voor precisie, eerlijkheid en duurzame resultaten in elke woning.",
-    ar: "تمثل Attar Klusservice الدقة والصدق والنتائج المتينة في كل منزل.",
+    nl: "Attar Klusservice levert renovatie- en onderhoudswerkzaamheden met een scherp oog voor detail, betrouwbaarheid en afwerking op topniveau.",
+    ar: "تقدم Attar Klusservice أعمال التجديد والصيانة بعين دقيقة للتفاصيل والموثوقية وتشطيب فائق.",
   },
   "about.body": {
-    nl: "Wij combineren traditioneel vakmanschap met moderne technieken. Elke klus, klein of groot, wordt uitgevoerd met dezelfde toewijding en oog voor detail. Wij werken transparant: heldere afspraken, eerlijke prijzen en perfecte afwerking.",
-    ar: "نجمع بين الحرفية التقليدية والتقنيات الحديثة. كل مهمة، صغيرة كانت أم كبيرة، تُنفذ بنفس التفاني والاهتمام بالتفاصيل. نعمل بشفافية: اتفاقيات واضحة وأسعار عادلة وتشطيب مثالي.",
+    nl: "Sinds de oprichting zeven jaar geleden heeft ons team een reputatie opgebouwd voor verzorgde projecten, transparante offertes en duurzame resultaten. We combineren moderne technieken met traditionele vakkennis en werken volgens duidelijke afspraken. Uw woning wordt behandeld alsof het ons eigen huis is.",
+    ar: "منذ تأسيسنا قبل أكثر من سبع سنوات، بنينا سمعة قوية في تنفيذ المشاريع بدقة، عروض أسعار واضحة، ونتائج تدوم. نمزج بين تقنيات حديثة وخبرة تقليدية، ونعمل وفق اتفاقيات شفافة. منزلكم يُعالج كما لو كان منزلنا الخاص.",
   },
   "about.stat1": { nl: "Jaren Ervaring", ar: "سنوات الخبرة" },
   "about.stat2": { nl: "Tevreden Klanten", ar: "عملاء راضون" },
@@ -57,7 +57,7 @@ export const translations: Dict = {
     ar: "احجز موعداً مجانياً.",
   },
 
-  "footer.powered": { nl: "Powered by", ar: "مدعوم من" },
+  "footer.powered": { nl: "Powerd by اسم الشركة", ar: "Powerd by اسم الشركة" },
   "footer.trust": { nl: "Trustbe Geverifieerd", ar: "موثق عبر Trustbe" },
   "footer.kvk": { nl: "KVK-nummer", ar: "رقم KVK" },
   "footer.address": { nl: "Adres", ar: "العنوان" },

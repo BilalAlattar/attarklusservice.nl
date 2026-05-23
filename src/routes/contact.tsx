@@ -46,24 +46,52 @@ function ContactPage() {
           <p className="text-lg text-black/60">{t("contact.pageLead")}</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-8"
           >
-            {info.map((i, k) => (
-              <div key={k} className="flex items-start gap-4 p-6 bg-white border border-black/10 rounded-2xl hover:border-orange transition-colors">
-                <div className="h-12 w-12 rounded-xl gradient-accent flex items-center justify-center shrink-0">
-                  <i.icon className="h-5 w-5 text-white" />
+            <div className="rounded-[2rem] bg-black text-white p-8 shadow-elegant">
+              <div className="text-orange text-xs uppercase tracking-[0.35em] mb-4">Company</div>
+              <h2 className="text-3xl font-display font-bold mb-3">Attar Klusservice</h2>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Premium onderhoud, renovatie en interieurwerk met een professionele aanpak en heldere afspraken.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl bg-white/5 p-5">
+                  <div className="text-xs uppercase tracking-widest text-white/50 mb-2">KVK</div>
+                  <div className="font-semibold text-white">42052229</div>
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-black/40 mb-1">{i.label}</div>
-                  <div className="font-semibold text-black">{i.v}</div>
+                <div className="rounded-3xl bg-white/5 p-5">
+                  <div className="text-xs uppercase tracking-widest text-white/50 mb-2">BTW</div>
+                  <div className="font-semibold text-white">NL869487371B01</div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            <div className="grid gap-4">
+              {info.map((i, k) => (
+                <div key={k} className="rounded-3xl border border-black/10 bg-white p-6 shadow-soft">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-12 w-12 rounded-2xl gradient-accent flex items-center justify-center shrink-0">
+                      <i.icon className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-widest text-black/40">{i.label}</div>
+                    </div>
+                  </div>
+                  <div className="text-base font-semibold text-black">
+                    {i.icon === Phone || i.icon === Mail ? (
+                      <span dir="ltr" className="inline-block text-black">{i.v}</span>
+                    ) : (
+                      i.v
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.form
@@ -74,26 +102,39 @@ function ContactPage() {
             className="bg-black text-white p-8 lg:p-10 rounded-3xl shadow-elegant space-y-4"
           >
             <h3 className="font-display font-bold text-2xl mb-2">{t("contact.title")}</h3>
-            <input
-              required placeholder={t("contact.name")} value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
-            />
-            <input
-              required type="email" placeholder={t("contact.email")} value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
-            />
-            <input
-              placeholder={t("contact.phone")} value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
-            />
-            <textarea
-              required rows={5} placeholder={t("contact.message")} value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none resize-none"
-            />
+            <div className="grid gap-4">
+              <input
+                required
+                placeholder={t("contact.name")}
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
+              />
+              <input
+                required
+                type="email"
+                placeholder={t("contact.email")}
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
+              />
+              <input
+                required
+                type="tel"
+                placeholder={t("contact.phone")}
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none"
+              />
+              <textarea
+                required
+                rows={5}
+                placeholder={t("contact.message")}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-orange outline-none resize-none"
+              />
+            </div>
             <button type="submit" className="w-full gradient-accent text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 shadow-elegant">
               <Send className="h-4 w-4" /> {t("contact.send")}
             </button>

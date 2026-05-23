@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 
@@ -43,6 +44,27 @@ const reviews = [
 
 export function Testimonials() {
   const { lang } = useLang();
+  const [page, setPage] = useState(0);
+  const pageSize = 2;
+  const pageCount = Math.ceil(reviews.length / pageSize);
+
+  const visibleReviews = useMemo(() => {
+    const start = page * pageSize;
+    const next = reviews.slice(start, start + pageSize);
+    if (next.length < pageSize) {
+      return next.concat(reviews.slice(0, pageSize - next.length));
+    }
+    return next;
+  }, [page]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPage((prev) => (prev + 1) % pageCount);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [pageCount]);
+
   return (
     <section className="py-24 px-6 lg:px-10 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -61,36 +83,43 @@ export function Testimonials() {
           <div className="h-1 w-20 bg-orange mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((r, i) => (
-            <motion.article
-              key={r.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="relative bg-white border border-black/10 rounded-2xl p-8 shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all group"
+        <div className="overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="grid gap-6 lg:grid-cols-2"
             >
-              <Quote className="absolute top-6 end-6 h-8 w-8 text-orange/20 group-hover:text-orange/40 transition-colors" />
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, k) => (
-                  <Star key={k} className="h-4 w-4 fill-orange text-orange" />
-                ))}
-              </div>
-              <p className="text-black/80 text-base leading-relaxed mb-6 italic">
-                "{lang === "nl" ? r.nl : r.ar}"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-black/5">
-                <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center text-orange font-display font-bold">
-                  {r.name[0]}
-                </div>
-                <div>
-                  <div className="font-display font-bold text-black">{r.name}</div>
-                  <div className="text-xs text-black/50 uppercase tracking-wider">{r.city}</div>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+              {visibleReviews.map((r) => (
+                <motion.article
+                  key={r.name}
+                  className="relative bg-white border border-black/10 rounded-2xl p-8 shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all group"
+                >
+                  <Quote className="absolute top-6 end-6 h-8 w-8 text-orange/20 group-hover:text-orange/40 transition-colors" />
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, k) => (
+                      <Star key={k} className="h-4 w-4 fill-orange text-orange" />
+                    ))}
+                  </div>
+                  <p className="text-black/80 text-base leading-relaxed mb-6 italic">
+                    "{lang === "nl" ? r.nl : r.ar}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-black/5">
+                    <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center text-orange font-display font-bold">
+                      {r.name[0]}
+                    </div>
+                    <div>
+                      <div className="font-display font-bold text-black">{r.name}</div>
+                      <div className="text-xs text-black/50 uppercase tracking-wider">{r.city}</div>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
