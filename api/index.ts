@@ -1,8 +1,7 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 // @ts-ignore
 import serverEntry from "../src/server.ts";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
   const host = req.headers.host ?? "localhost";
   const url = new URL(req.url ?? "/", `https://${host}`);
   
