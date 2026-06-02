@@ -14,7 +14,7 @@ export default async function handler(req: any, res: any) {
   });
 
   try {
-    const response = await serverEntry.fetch(request);
+    const response = await serverEntry.fetch(request, undefined, undefined);
 
     // نسخ الـ Headers من استجابة الخادم إلى Vercel
     for (const [key, value] of response.headers.entries()) {
