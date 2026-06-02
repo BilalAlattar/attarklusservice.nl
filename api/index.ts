@@ -1,5 +1,5 @@
 // @ts-ignore
-import serverEntry from "../src/server.ts";
+import serverEntry from "../dist/server/index.js";
 
 export default async function handler(req: any, res: any) {
   const host = req.headers.host ?? "localhost";
@@ -16,7 +16,7 @@ export default async function handler(req: any, res: any) {
   try {
     const response = await serverEntry.fetch(request, undefined, undefined);
 
-    // نسخ الـ Headers من استجابة الخادم إلى Vercel
+    // نسخ الـ Headers من استجابة الخادم إلى Vercel هذا هو التعديل الاخير
     for (const [key, value] of response.headers.entries()) {
       if (value !== undefined) {
         res.setHeader(key, value);
