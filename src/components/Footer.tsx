@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Star, MapPin, Phone, Mail, Send } from "lucide-react";
+import footerLogo from "@/assets/logo footer.png";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -24,8 +25,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white mt-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <footer className="bg-slate-950 text-slate-200 mt-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* LEFT */}
           <motion.div
@@ -34,29 +35,23 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-12 w-12 rounded-lg bg-orange flex items-center justify-center">
-                <span className="font-display font-black text-2xl text-black">A</span>
+              <img
+                src={footerLogo}
+                alt="Attar Klusservice"
+                className="h-14 w-14 rounded-3xl object-cover border border-slate-700"
+              />
+              <div>
+                <div className="text-sm font-semibold text-white">Attar Klusservice</div>
+                <div className="text-xs text-slate-400">Premium Vakwerk & Vertrouwen</div>
               </div>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">{t("footer.tagline")}</p>
-            <ul className="space-y-3 text-sm text-white/80">
-              <li><span className="text-white/50">{t("footer.kvk")}:</span> 42052229</li>
-              <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 text-orange shrink-0" />
-                Hoofdstraat 12, 1011 AB Amsterdam
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-orange shrink-0" />
-                <a href="tel:+31612345678" className="hover:text-orange">
-                  <span dir="ltr" className="inline-block">+31 6 1234 5678</span>
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-orange shrink-0" />
-                <a href="mailto:Sales@attarklusservice.nl" className="hover:text-orange">
-                  <span dir="ltr" className="inline-block">Sales@attarklusservice.nl</span>
-                </a>
-              </li>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">{t("footer.tagline")}</p>
+            <ul className="space-y-3 text-sm text-slate-300">
+              <li><span className="text-slate-500">{t("footer.kvk")}:</span> 42052229</li>
+              <li><span className="text-slate-500">Btw-id:</span> NL869487371B01</li>
+              <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-orange shrink-0" /> Smient 9, 5667 NH Geldrop</li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-orange shrink-0" /> <a href="tel:+31628341240" className="hover:text-orange"><span dir="ltr" className="inline-block">+31628341240</span></a></li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-orange shrink-0" /> <a href="mailto:Sales@attarklusservice.nl" className="hover:text-orange"><span dir="ltr" className="inline-block">Sales@attarklusservice.nl</span></a></li>
             </ul>
           </motion.div>
 
@@ -68,14 +63,14 @@ export function Footer() {
             transition={{ delay: 0.1 }}
             className="flex flex-col items-start lg:items-center text-start lg:text-center"
           >
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 w-full max-w-xs">
+            <div className="bg-slate-900 border border-slate-800 rounded-[32px] p-8 w-full max-w-xs shadow-soft">
               <div className="flex items-center justify-center gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-orange text-orange" />
                 ))}
               </div>
               <div className="text-center font-display font-bold text-lg">Trustbe</div>
-              <div className="text-center text-xs text-white/60 mt-1">{t("footer.trust")}</div>
+              <div className="text-center text-sm text-slate-400 mt-1">{t("footer.trust")}</div>
             </div>
 
             <div className="flex gap-4 mt-8">
@@ -89,13 +84,12 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="h-11 w-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange hover:border-orange transition-all"
+                  className="h-12 w-12 rounded-3xl bg-white/5 border border-slate-800 flex items-center justify-center hover:bg-orange hover:border-orange transition-all"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5 text-white" />
                 </a>
               ))}
             </div>
-
           </motion.div>
 
           {/* RIGHT */}
@@ -105,14 +99,14 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="font-display font-bold text-xl mb-5">{t("contact.title")}</h3>
-            <form onSubmit={onSubmit} className="space-y-3">
+            <h3 className="font-display font-bold text-xl mb-5 text-white">{t("contact.title")}</h3>
+            <form onSubmit={onSubmit} className="space-y-4 bg-slate-900/80 border border-slate-800 rounded-[32px] p-6">
               <input
                 required
                 placeholder={t("contact.name")}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:border-orange outline-none transition-colors"
+                className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 outline-none focus:ring-2 focus:ring-orange"
               />
               <input
                 required
@@ -120,13 +114,13 @@ export function Footer() {
                 placeholder={t("contact.email")}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:border-orange outline-none transition-colors"
+                className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 outline-none focus:ring-2 focus:ring-orange"
               />
               <input
                 placeholder={t("contact.phone")}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:border-orange outline-none transition-colors"
+                className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 outline-none focus:ring-2 focus:ring-orange"
               />
               <textarea
                 required
@@ -134,11 +128,11 @@ export function Footer() {
                 placeholder={t("contact.message")}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:border-orange outline-none transition-colors resize-none"
+                className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 outline-none focus:ring-2 focus:ring-orange resize-none"
               />
               <button
                 type="submit"
-                className="w-full gradient-accent text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-elegant"
+                className="w-full btn-primary"
               >
                 <Send className="h-4 w-4" />
                 {t("contact.send")}
@@ -150,12 +144,8 @@ export function Footer() {
           </motion.div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-6 text-xs text-white/40 flex flex-col lg:flex-row items-center justify-between gap-3">
-          <span>© {new Date().getFullYear()} Attar Klusservice. All rights reserved.</span>
-          <span className="text-center text-white/70">
-            {t("footer.powered")} <a href="https://attarklusservice.nl" target="_blank" rel="noreferrer" className="text-orange font-semibold hover:underline">Attarklusservice.nl</a>
-          </span>
-          <span>KVK 42052229 · BTW NL869487371B01</span>
+        <div className="border-t border-slate-800 mt-12 pt-6 text-xs text-slate-500">
+          <div className="text-center">{t("footer.copyright").replace("{year}", new Date().getFullYear().toString())} <a href="/" className="text-orange font-semibold hover:text-white transition-colors">Attar Klusservice</a></div>
         </div>
       </div>
     </footer>

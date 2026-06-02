@@ -23,24 +23,24 @@ function AboutPage() {
   ];
 
   return (
-    <section className="px-6 lg:px-10 py-20 bg-white">
+    <section className="px-6 lg:px-10 py-20 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
+          <div className="inline-block px-4 py-2 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
             {t("nav.about")}
           </div>
-          <h1 className="text-5xl lg:text-6xl font-display font-black text-black mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-6xl font-display font-black text-slate-950 mb-6 leading-tight">
             {t("about.title")}
           </h1>
-          <p className="text-xl text-black/70 leading-relaxed mb-6">{t("about.lead")}</p>
-          <p className="text-base text-black/60 leading-relaxed">{t("about.body")}</p>
+          <p className="text-xl text-slate-700 leading-relaxed mb-6">{t("about.lead")}</p>
+          <p className="text-base text-slate-600 leading-relaxed">{t("about.body")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {values.map((v, i) => (
             <motion.div
               key={i}
@@ -48,16 +48,16 @@ function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-black text-white p-8 rounded-2xl group hover:bg-orange transition-colors cursor-default"
+              className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-soft hover:shadow-elegant transition-all"
             >
-              <v.icon className="h-8 w-8 text-orange group-hover:text-white mb-4 transition-colors" />
-              <div className="font-display font-bold text-xl mb-2">{v.t[lang]}</div>
-              <div className="text-sm text-white/70 group-hover:text-white/90">{v.d[lang]}</div>
+              <v.icon className="h-8 w-8 text-orange mb-4" />
+              <div className="font-display font-bold text-xl mb-2 text-slate-950">{v.t[lang]}</div>
+              <div className="text-sm text-slate-600">{v.d[lang]}</div>
             </motion.div>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-16 bg-black rounded-3xl p-10 lg:p-14">
+        <div className="grid md:grid-cols-3 gap-6 mt-16">
           {[
             { n: "15+", l: t("about.stat1") },
             { n: "500+", l: t("about.stat2") },
@@ -69,10 +69,10 @@ function AboutPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="text-center"
+              className="text-center rounded-[32px] bg-slate-950 p-10 shadow-soft"
             >
-              <div className="font-display font-black text-6xl text-orange mb-2">{s.n}</div>
-              <div className="text-sm text-white/60 uppercase tracking-widest">{s.l}</div>
+              <div className="font-display font-black text-5xl text-orange mb-2">{s.n}</div>
+              <div className="text-sm text-slate-300 uppercase tracking-widest">{s.l}</div>
             </motion.div>
           ))}
         </div>
