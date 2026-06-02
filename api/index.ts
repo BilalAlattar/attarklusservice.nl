@@ -1,4 +1,4 @@
-import serverEntry from "../dist/server/index.js";
+import serverEntry from "../src/server.ts";
 
 export default async function handler(req, res) {
   const host = req.headers.host ?? "localhost";
