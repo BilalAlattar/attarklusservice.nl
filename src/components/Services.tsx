@@ -59,7 +59,7 @@ export function Services({ initial = 3 }: { initial?: number }) {
   const showLess = () => setCount(initial);
 
   return (
-    <section className="py-24 px-6 lg:px-10 bg-white">
+    <section className="py-24 px-6 lg:px-10 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -67,10 +67,10 @@ export function Services({ initial = 3 }: { initial?: number }) {
           viewport={{ once: true }}
           className="text-center mb-16 max-w-2xl mx-auto"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
+          <div className="inline-block px-4 py-2 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
             {t("services.title")}
           </div>
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-black mb-4">
+          <h2 className="text-4xl lg:text-5xl font-display font-bold text-slate-950 mb-4">
             {t("services.subtitle")}
           </h2>
           <div className="h-1 w-20 bg-orange mx-auto rounded-full" />
@@ -92,7 +92,7 @@ export function Services({ initial = 3 }: { initial?: number }) {
                     reverse ? "lg:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  <div className="relative group overflow-hidden rounded-2xl shadow-soft">
+                  <div className="relative group overflow-hidden rounded-[32px] shadow-soft border border-slate-200 bg-white">
                     <motion.img
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.6 }}
@@ -103,20 +103,20 @@ export function Services({ initial = 3 }: { initial?: number }) {
                       height={768}
                       className="w-full h-[380px] object-cover"
                     />
-                    <div className="absolute top-5 start-5 bg-black text-orange px-3 py-1.5 rounded-full text-xs font-bold tracking-widest">
+                    <div className="absolute top-5 start-5 bg-slate-950 text-orange px-3 py-1.5 rounded-full text-xs font-bold tracking-widest">
                       0{i + 1}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-3xl lg:text-4xl font-display font-bold text-black mb-4 leading-tight">
+                  <div className="bg-white rounded-[32px] border border-slate-200 shadow-soft p-8">
+                    <h3 className="text-3xl lg:text-4xl font-display font-bold text-slate-950 mb-4 leading-tight">
                       {t(s.titleKey)}
                     </h3>
-                    <div className="h-1 w-12 bg-orange rounded-full mb-5" />
-                    <p className="text-black/70 text-lg leading-relaxed mb-6">{t(s.descKey)}</p>
-                    <ul className="space-y-2.5">
+                    <div className="h-1 w-16 bg-orange rounded-full mb-5" />
+                    <p className="text-slate-700 text-lg leading-relaxed mb-6">{t(s.descKey)}</p>
+                    <ul className="space-y-3">
                       {s.bullets.map((b, k) => (
-                        <li key={k} className="flex items-center gap-3 text-black/80">
-                          <span className="h-6 w-6 rounded-full bg-orange/10 flex items-center justify-center shrink-0">
+                        <li key={k} className="flex items-start gap-3 text-slate-700">
+                          <span className="mt-1 h-6 w-6 rounded-full bg-orange/10 flex items-center justify-center shrink-0">
                             <Check className="h-3.5 w-3.5 text-orange" strokeWidth={3} />
                           </span>
                           <span className="font-medium">{b[lang]}</span>
@@ -136,25 +136,15 @@ export function Services({ initial = 3 }: { initial?: number }) {
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.96 }}
               onClick={showMore}
-              className="group relative inline-flex flex-col items-center gap-3"
+              className="btn-primary"
             >
-              <span className="text-sm font-bold tracking-[0.25em] uppercase text-black group-hover:text-orange transition-colors">
-                {t("services.more")}
-              </span>
-              <span className="h-16 w-16 rounded-full gradient-accent flex items-center justify-center shadow-elegant group-hover:shadow-[0_25px_50px_-12px_rgba(255,102,0,0.6)] transition-all">
-                <motion.span
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 1.8, repeat: Infinity }}
-                >
-                  <ArrowDown className="h-7 w-7 text-white" strokeWidth={2.5} />
-                </motion.span>
-              </span>
+              {t("services.more")}
             </motion.button>
           )}
           {count > initial && (
             <button
               onClick={showLess}
-              className="text-xs uppercase tracking-widest text-black/50 hover:text-orange flex items-center gap-2 mt-4"
+              className="text-xs uppercase tracking-widest text-slate-500 hover:text-orange flex items-center gap-2 mt-4"
             >
               <ArrowUp className="h-3.5 w-3.5" />
               {t("services.less")}

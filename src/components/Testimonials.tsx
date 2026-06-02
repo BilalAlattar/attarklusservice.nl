@@ -66,7 +66,7 @@ export function Testimonials() {
   }, [pageCount]);
 
   return (
-    <section className="py-24 px-6 lg:px-10 bg-white">
+    <section className="py-24 px-6 lg:px-10 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -74,10 +74,10 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-16 max-w-2xl mx-auto"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
+          <div className="inline-block px-4 py-2 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
             {lang === "nl" ? "Klantbeoordelingen" : "آراء العملاء"}
           </div>
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-black mb-4">
+          <h2 className="text-4xl lg:text-5xl font-display font-bold text-slate-950 mb-4">
             {lang === "nl" ? "Wat onze klanten zeggen" : "ماذا يقول عملاؤنا"}
           </h2>
           <div className="h-1 w-20 bg-orange mx-auto rounded-full" />
@@ -96,7 +96,7 @@ export function Testimonials() {
               {visibleReviews.map((r) => (
                 <motion.article
                   key={r.name}
-                  className="relative bg-white border border-black/10 rounded-2xl p-8 shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all group"
+                  className="relative bg-white border border-slate-200 rounded-[32px] p-8 shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all group"
                 >
                   <Quote className="absolute top-6 end-6 h-8 w-8 text-orange/20 group-hover:text-orange/40 transition-colors" />
                   <div className="flex gap-1 mb-4">
@@ -104,16 +104,16 @@ export function Testimonials() {
                       <Star key={k} className="h-4 w-4 fill-orange text-orange" />
                     ))}
                   </div>
-                  <p className="text-black/80 text-base leading-relaxed mb-6 italic">
+                  <p className="text-slate-700 text-base leading-relaxed mb-6 italic">
                     "{lang === "nl" ? r.nl : r.ar}"
                   </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-black/5">
-                    <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center text-orange font-display font-bold">
+                  <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
+                    <div className="h-10 w-10 rounded-full bg-orange/10 flex items-center justify-center text-orange font-display font-bold">
                       {r.name[0]}
                     </div>
                     <div>
-                      <div className="font-display font-bold text-black">{r.name}</div>
-                      <div className="text-xs text-black/50 uppercase tracking-wider">{r.city}</div>
+                      <div className="font-display font-bold text-slate-950">{r.name}</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wider">{r.city}</div>
                     </div>
                   </div>
                 </motion.article>

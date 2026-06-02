@@ -99,6 +99,27 @@ export const translations: Dict = {
     nl: "Kleine renovaties, herstelwerkzaamheden en onderhoud — uw woning in topconditie.",
     ar: "تجديدات صغيرة وإصلاحات وصيانة — منزلك في أفضل حالة.",
   },
+
+  "contact.formLead": {
+    nl: "Laat ons weten wat u nodig heeft en wij nemen snel contact op.",
+    ar: "أخبرنا بما تحتاجه وسنعاود الاتصال بك في أسرع وقت.",
+  },
+  "contact.description": {
+    nl: "Neem vandaag contact op voor een gratis, vrijblijvende offerte. Wij transformeren huizen met innovatieve oplossingen en vakmanschap.",
+    ar: "اتصل بنا اليوم وحصل على استشارة مجانية، نحن نحول المنازل بأفكار مبتكرة ومهارة عالية.",
+  },
+  "contact.companyInfo": {
+    nl: "Premium onderhoud, renovatie en interieurwerk met een professionele aanpak en heldere afspraken.",
+    ar: "نقدّم خدمات عالية الجودة في: الدهانات، الأعمال الخشبية، الترميم، وتركيب الأرضيات. خبرة واحترافية تناسب منزلك.",
+  },
+  "footer.copyright": {
+    nl: "© {year} Alle rechten voorbehouden aan",
+    ar: "© {year} جميع الحقوق محفوظة لـ",
+  },
+  "footer.formSent": {
+    nl: "Bedankt! Wij nemen snel contact op.",
+    ar: "تم الإرسال — شكرًا لك!",
+  },
 };
 
 type Ctx = {
