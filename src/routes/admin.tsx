@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AlertCircle,
   CheckCircle,
+  Eye,
+  EyeOff,
   ImageIcon,
   Loader2,
   LogIn,
@@ -42,6 +44,7 @@ type Status = { type: "success" | "error"; msg: string };
 // ─── component ──────────────────────────────────────────
 function AdminPage() {
   const [inputPw, setInputPw] = useState("");
+  const [showPw, setShowPw] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const storedPw = useRef("");
 
@@ -190,14 +193,24 @@ function AdminPage() {
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
-            <input
-              type="password"
-              value={inputPw}
-              onChange={(e) => setInputPw(e.target.value)}
-              placeholder="كلمة المرور / Wachtwoord"
-              autoFocus
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-orange/60 transition-all"
-            />
+            <div className="relative">
+              <input
+                type={showPw ? "text" : "password"}
+                value={inputPw}
+                onChange={(e) => setInputPw(e.target.value)}
+                placeholder="كلمة المرور / Wachtwoord"
+                autoFocus
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-orange/60 transition-all"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPw((v) => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/80 transition-colors"
+                tabIndex={-1}
+              >
+                {showPw ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
+            </div>
 
             {loginError && (
               <p className="flex items-center gap-2 text-red-400 text-sm">
