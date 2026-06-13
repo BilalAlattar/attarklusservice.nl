@@ -13,19 +13,36 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import {
-  deleteGalleryImage,
-  listGalleryImages,
-  uploadGalleryImage,
-  verifyAdminPassword,
-  type GalleryFile,
-} from "@/lib/github";
 
 export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-// ─── helpers ────────────────────────────────────────────
+// ─── types ───────────────────────────────────────────────
+type GalleryFile = {
+  name: string;
+  sha: string;
+  size: number;
+  download_url: string;
+};
+
+type Status = { type: "success" | "error"; msg: string };
+
+// ─── api helper ──────────────────────────────────────────
+async function adminApi(body: Record<string, string>) {
+  const res = await fetch("/api/admin", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({})) as { error?: string };
+    throw new Error(err.error ?? `HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
+// ─── helpers ─────────────────────────────────────────────
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -39,9 +56,7 @@ function sanitizeFilename(name: string) {
   return name.replace(/[^a-zA-Z0-9._-]/g, "_");
 }
 
-type Status = { type: "success" | "error"; msg: string };
-
-// ─── component ──────────────────────────────────────────
+// ─── component ───────────────────────────────────────────
 function AdminPage() {
   const [inputPw, setInputPw] = useState("");
   const [showPw, setShowPw] = useState(false);
@@ -66,8 +81,8 @@ function AdminPage() {
   const loadImages = useCallback(async () => {
     setLoadingImages(true);
     try {
-      const imgs = await listGalleryImages();
-      setImages(imgs);
+      const imgs = await adminApi({ action: "images", password: storedPw.current });
+      setImages(imgs as GalleryFile[]);
     } catch {
       showStatus("error", "فشل تحميل قائمة الصور من GitHub.");
     } finally {
@@ -89,13 +104,13 @@ function AdminPage() {
     if (isAuth) loadImages();
   }, [isAuth, loadImages]);
 
-  // ── login ──────────────────────────────────────────────
+  // ── login ─────────────────────────────────────────────
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError("");
     setLoginLoading(true);
     try {
-      await verifyAdminPassword({ data: { password: inputPw } });
+      await adminApi({ action: "images", password: inputPw });
       sessionStorage.setItem("admin_pw", inputPw);
       storedPw.current = inputPw;
       setIsAuth(true);
@@ -114,7 +129,7 @@ function AdminPage() {
     setInputPw("");
   };
 
-  // ── upload ─────────────────────────────────────────────
+  // ── upload ────────────────────────────────────────────
   const processFiles = async (files: File[]) => {
     if (!files.length) return;
     setUploading(true);
@@ -124,9 +139,7 @@ function AdminPage() {
       try {
         const content = await fileToBase64(file);
         const filename = `${Date.now()}_${sanitizeFilename(file.name)}`;
-        await uploadGalleryImage({
-          data: { password: storedPw.current, filename, content },
-        });
+        await adminApi({ action: "upload", password: storedPw.current, filename, content });
         ok++;
       } catch {
         fail++;
@@ -134,15 +147,9 @@ function AdminPage() {
     }
     setUploading(false);
     if (fail === 0) {
-      showStatus(
-        "success",
-        `تم رفع ${ok} صورة بنجاح! ستظهر على الموقع خلال ~1-2 دقيقة بعد إعادة البناء.`
-      );
+      showStatus("success", `تم رفع ${ok} صورة! ستظهر على الموقع خلال ~1-2 دقيقة.`);
     } else {
-      showStatus(
-        "error",
-        `تم رفع ${ok} صورة — فشل رفع ${fail}. تحقق من صلاحيات GITHUB_TOKEN.`
-      );
+      showStatus("error", `تم رفع ${ok} — فشل ${fail}. تحقق من صلاحيات GITHUB_TOKEN.`);
     }
     if (fileInputRef.current) fileInputRef.current.value = "";
     loadImages();
@@ -157,18 +164,13 @@ function AdminPage() {
     processFiles(Array.from(e.dataTransfer.files));
   };
 
-  // ── delete ─────────────────────────────────────────────
+  // ── delete ────────────────────────────────────────────
   const handleDelete = async (img: GalleryFile) => {
-    if (!confirm(`حذف "${img.name}"؟\nVerwijder "${img.name}"?`)) return;
+    if (!confirm(`حذف "${img.name}"؟`)) return;
     setDeletingId(img.sha);
     try {
-      await deleteGalleryImage({
-        data: { password: storedPw.current, filename: img.name, sha: img.sha },
-      });
-      showStatus(
-        "success",
-        `تم حذف "${img.name}". ستختفي من الموقع خلال ~1-2 دقيقة.`
-      );
+      await adminApi({ action: "delete", password: storedPw.current, filename: img.name, sha: img.sha });
+      showStatus("success", `تم حذف "${img.name}". ستختفي من الموقع خلال ~1-2 دقيقة.`);
       loadImages();
     } catch (err) {
       showStatus("error", `فشل الحذف: ${String(err)}`);
@@ -259,27 +261,20 @@ function AdminPage() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-6 py-8 space-y-6">
         {/* ── status banner ── */}
         {status && (
-          <div
-            className={`flex items-start gap-3 p-4 rounded-xl ${
-              status.type === "success"
-                ? "bg-emerald-500/10 border border-emerald-500/20"
-                : "bg-red-500/10 border border-red-500/20"
-            }`}
-          >
+          <div className={`flex items-start gap-3 p-4 rounded-xl ${
+            status.type === "success"
+              ? "bg-emerald-500/10 border border-emerald-500/20"
+              : "bg-red-500/10 border border-red-500/20"
+          }`}>
             {status.type === "success" ? (
               <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
             ) : (
               <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
             )}
-            <p
-              className={`text-sm flex-1 ${status.type === "success" ? "text-emerald-300" : "text-red-300"}`}
-            >
+            <p className={`text-sm flex-1 ${status.type === "success" ? "text-emerald-300" : "text-red-300"}`}>
               {status.msg}
             </p>
-            <button
-              onClick={() => setStatus(null)}
-              className="text-white/30 hover:text-white transition-colors"
-            >
+            <button onClick={() => setStatus(null)} className="text-white/30 hover:text-white transition-colors">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -288,13 +283,10 @@ function AdminPage() {
         {/* ── rebuild notice ── */}
         <div className="flex items-start gap-3 bg-blue-500/8 border border-blue-500/15 rounded-xl px-4 py-3">
           <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
-          <div className="text-blue-300/80 text-sm leading-relaxed">
-            بعد الرفع أو الحذف، يقوم Vercel بإعادة البناء تلقائياً وتظهر التغييرات على الموقع خلال{" "}
+          <p className="text-blue-300/80 text-sm">
+            بعد الرفع أو الحذف، يقوم Vercel بإعادة البناء تلقائياً خلال{" "}
             <strong className="text-blue-300">~1–2 دقيقة</strong>.
-            <span className="block text-blue-400/50 text-xs mt-0.5">
-              Na elke wijziging bouwt Vercel automatisch opnieuw — zichtbaar na ~1-2 min.
-            </span>
-          </div>
+          </p>
         </div>
 
         {/* ── upload drop zone ── */}
@@ -307,14 +299,7 @@ function AdminPage() {
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            multiple
-            className="hidden"
-            onChange={handleFileChange}
-          />
+          <input ref={fileInputRef} type="file" accept="image/*" multiple className="hidden" onChange={handleFileChange} />
           {uploading ? (
             <div className="flex flex-col items-center gap-3">
               <Loader2 className="w-10 h-10 text-orange animate-spin" />
@@ -326,12 +311,8 @@ function AdminPage() {
                 <Upload className="w-6 h-6 text-white/40 group-hover:text-orange transition-colors" />
               </div>
               <div>
-                <p className="text-white/70 font-medium">
-                  اسحب الصور هنا أو انقر للاختيار
-                </p>
-                <p className="text-white/35 text-xs mt-1">
-                  Klik of sleep afbeeldingen — JPG, PNG, WEBP, AVIF · meerdere tegelijk mogelijk
-                </p>
+                <p className="text-white/70 font-medium">اسحب الصور هنا أو انقر للاختيار</p>
+                <p className="text-white/35 text-xs mt-1">JPG, PNG, WEBP, AVIF · يمكن اختيار عدة صور</p>
               </div>
             </div>
           )}
@@ -341,9 +322,7 @@ function AdminPage() {
         <div className="flex items-center justify-between">
           <h2 className="text-white font-semibold">
             الصور الحالية في المستودع
-            <span className="text-white/40 font-normal text-sm mr-2">
-              ({images.length})
-            </span>
+            <span className="text-white/40 font-normal text-sm mr-2">({images.length})</span>
           </h2>
           <button
             onClick={loadImages}
@@ -368,19 +347,15 @@ function AdminPage() {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pb-8">
             {images.map((img) => (
-              <div
-                key={img.sha}
-                className="group relative rounded-xl overflow-hidden bg-white/5 aspect-square"
-              >
+              <div key={img.sha} className="group relative rounded-xl overflow-hidden bg-white/5 aspect-square">
                 <img
                   src={img.download_url}
                   alt={img.name}
                   loading="lazy"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
                 />
-                {/* overlay */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-2">
-                  <p className="text-white text-[10px] bg-black/70 rounded px-1.5 py-0.5 w-fit max-w-full truncate leading-snug">
+                  <p className="text-white text-[10px] bg-black/70 rounded px-1.5 py-0.5 w-fit max-w-full truncate">
                     {img.name}
                   </p>
                   <button
@@ -388,11 +363,10 @@ function AdminPage() {
                     disabled={deletingId === img.sha}
                     className="self-end w-8 h-8 bg-red-500 hover:bg-red-400 rounded-lg flex items-center justify-center transition-colors disabled:opacity-60"
                   >
-                    {deletingId === img.sha ? (
-                      <Loader2 className="w-4 h-4 text-white animate-spin" />
-                    ) : (
-                      <Trash2 className="w-4 h-4 text-white" />
-                    )}
+                    {deletingId === img.sha
+                      ? <Loader2 className="w-4 h-4 text-white animate-spin" />
+                      : <Trash2 className="w-4 h-4 text-white" />
+                    }
                   </button>
                 </div>
               </div>

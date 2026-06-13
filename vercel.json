@@ -9,10 +9,15 @@
     {
       "src": "api/index.ts",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/admin.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/api/admin", "dest": "/api/admin.ts" },
     { "src": "/(.*)", "dest": "/api/index.ts" }
   ]
 }
