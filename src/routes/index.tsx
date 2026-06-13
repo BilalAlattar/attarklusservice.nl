@@ -4,6 +4,7 @@ import { ArrowRight, Shield, Award, Clock, Sparkles } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
+import { ContactSection } from "@/components/ContactSection";
 import heroVideo from "@/assets/worker-demo.mp4";
 
 export const Route = createFileRoute("/")({
@@ -117,6 +118,7 @@ function Home() {
 
       <Gallery />
       <Testimonials />
+      <ContactSection />
     </>
   );
 }
