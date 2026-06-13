@@ -21,8 +21,8 @@ function buildHeaders() {
 }
 
 function assertPassword(password: string) {
-  const expected = process.env.ADMIN_PASSWORD;
-  if (!expected || password !== expected) {
+  const expected = (process.env.ADMIN_PASSWORD ?? "").trim();
+  if (!expected || password.trim() !== expected) {
     throw new Error("Unauthorized");
   }
 }
