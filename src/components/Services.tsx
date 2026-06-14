@@ -8,6 +8,12 @@ import flooring from "@/assets/service-flooring.jpg";
 import painting from "@/assets/service-painting.jpg";
 import installation from "@/assets/service-gypsum.jpg";
 import renovation from "@/assets/service-ceilings.jpg";
+import drywall from "@/assets/service-drywall.jpg";
+import stucco from "@/assets/service-stucco.jpg";
+import insulation from "@/assets/service-insulation.jpg";
+import wallpaper from "@/assets/service-wallpaper.jpg";
+import doorpainting from "@/assets/service-doorpainting.jpg";
+import customcarpentry from "@/assets/service-customcarpentry.jpg";
 
 type Key = keyof typeof translations;
 
@@ -46,6 +52,42 @@ const services: { img: string; titleKey: Key; descKey: Key; bullets: { nl: strin
       { nl: "Herstelwerkzaamheden", ar: "أعمال إصلاح" },
       { nl: "Opknappen van ruimtes", ar: "تحسين وتجهيز المساحات" },
       { nl: "Onderhoudswerkzaamheden", ar: "أعمال صيانة" },
+    ] },
+  { img: drywall, titleKey: "s.drywall.t", descKey: "s.drywall.d",
+    bullets: [
+      { nl: "Strakke afwerking", ar: "براعة في التشطيب" },
+      { nl: "Snelle en nette uitvoering", ar: "تنفيذ سريع وأنيق" },
+      { nl: "Oplossingen op maat voor elke ruimte", ar: "حلول مصممة لكل مساحة" },
+    ] },
+  { img: stucco, titleKey: "s.stucco.t", descKey: "s.stucco.d",
+    bullets: [
+      { nl: "Glad en strak resultaat", ar: "نتيجة ناعمة وأنيقة" },
+      { nl: "Hoogwaardige materialen", ar: "مواد عالية الجودة" },
+      { nl: "Klaar voor elke afwerking", ar: "جاهز لأي تشطيب" },
+    ] },
+  { img: insulation, titleKey: "s.insulation.t", descKey: "s.insulation.d",
+    bullets: [
+      { nl: "Lagere energiekosten", ar: "تقليل تكاليف الطاقة" },
+      { nl: "Meer wooncomfort", ar: "راحة أعلى في المنزل" },
+      { nl: "Duurzame oplossingen", ar: "حلول مستدامة" },
+    ] },
+  { img: wallpaper, titleKey: "s.wallpaper.t", descKey: "s.wallpaper.d",
+    bullets: [
+      { nl: "Verwijderen zonder schade", ar: "إزالة دون أضرار" },
+      { nl: "Nauwkeurige plaatsing", ar: "تركيب دقيق" },
+      { nl: "Moderne en stijlvolle afwerking", ar: "تشطيب عصري وأنيق" },
+    ] },
+  { img: doorpainting, titleKey: "s.doorpainting.t", descKey: "s.doorpainting.d",
+    bullets: [
+      { nl: "Kostenbesparend alternatief", ar: "بديل اقتصادي موفّر" },
+      { nl: "Duurzame afwerking", ar: "تشطيب متين وطويل الأمد" },
+      { nl: "Moderne uitstraling", ar: "مظهر عصري وأنيق" },
+    ] },
+  { img: customcarpentry, titleKey: "s.customcarpentry.t", descKey: "s.customcarpentry.d",
+    bullets: [
+      { nl: "Volledig op maat gemaakt", ar: "مصنوع بالكامل حسب الطلب" },
+      { nl: "Hoogwaardige afwerking", ar: "تشطيب عالي الجودة" },
+      { nl: "Maximale benutting van uw ruimte", ar: "أقصى استفادة من مساحتك" },
     ] },
 ];
 

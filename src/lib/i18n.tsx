@@ -100,6 +100,42 @@ export const translations: Dict = {
     ar: "تجديدات صغيرة وإصلاحات وصيانة — منزلك في أفضل حالة.",
   },
 
+  "s.drywall.t": { nl: "Gipsplaten & Systeemwanden", ar: "ألواح الجبس والجدران الخفيفة" },
+  "s.drywall.d": {
+    nl: "Wilt u uw woning of bedrijfsruimte efficiënt indelen of moderniseren? Wij verzorgen de professionele plaatsing van gipsplaten, scheidingswanden en plafonds. Met oog voor detail creëren wij strakke, duurzame en perfect afgewerkte ruimtes die volledig aansluiten bij uw wensen.",
+    ar: "هل تريد تقسيم مساحتك بشكل عصري وفعّال؟ نتولى التركيب الاحترافي لألواح الجبس والجدران الخفيفة والأسقف بدقة عالية، لنُبدع مساحات متناسقة ومتينة ومشطّبة بإتقان تام وفق رغباتك.",
+  },
+
+  "s.stucco.t": { nl: "Stucwerk & Plamuurwerk", ar: "أعمال التلييس والبلمبر" },
+  "s.stucco.d": {
+    nl: "Een perfect eindresultaat begint met een perfect voorbereide ondergrond. Wij zorgen voor gladde muren en plafonds door professioneel plamuur- en stucwerk. Zo creëren wij de ideale basis voor verf, behang of andere afwerkingen.",
+    ar: "النتيجة المثالية تبدأ من الأساس المثالي. نُعدّ الجدران والأسقف بعمل تلييس وبلمبر احترافي يضمن سطحاً ناعماً ومستوياً تماماً، جاهزاً للطلاء أو ورق الجدران أو أي تشطيب آخر.",
+  },
+
+  "s.insulation.t": { nl: "Isolatie", ar: "العزل الحراري والصوتي" },
+  "s.insulation.d": {
+    nl: "Bespaar op energiekosten en verhoog uw wooncomfort met professionele isolatie. Wij bieden oplossingen voor thermische en akoestische isolatie die zorgen voor een aangename temperatuur en minder geluidsoverlast.",
+    ar: "وفّر على فاتورة الطاقة وعزّز راحتك في المنزل مع العزل الاحترافي. نقدم حلول العزل الحراري والصوتي التي توفر درجة حرارة مريحة وتُقلل الضوضاء.",
+  },
+
+  "s.wallpaper.t": { nl: "Behang Verwijderen & Nieuw Behang Plaatsen", ar: "إزالة الورق وتركيب ورق جديد" },
+  "s.wallpaper.d": {
+    nl: "Toe aan een nieuwe uitstraling? Wij verwijderen oud behang zorgvuldig en plaatsen nieuw behang vakkundig voor een strak en stijlvol resultaat. Van klassiek tot modern, wij zorgen voor een perfecte afwerking.",
+    ar: "هل تريد مظهراً جديداً؟ نزيل الورق القديم بعناية ونركّب الجديد باحتراف لنتيجة أنيقة ومتناسقة. من الكلاسيكي إلى العصري، نضمن تشطيباً مثالياً.",
+  },
+
+  "s.doorpainting.t": { nl: "Schilderwerk van Deuren & Keukens", ar: "طلاء الأبواب والمطابخ" },
+  "s.doorpainting.d": {
+    nl: "Geef uw deuren en keuken een tweede leven zonder hoge vervangingskosten. Met professionele verf- en laktechnieken zorgen wij voor een frisse, moderne uitstraling die jarenlang meegaat.",
+    ar: "امنح أبوابك ومطبخك حياة جديدة دون تكاليف الاستبدال الباهظة. بتقنيات الطلاء والورنيش الاحترافية، نضمن مظهراً عصرياً وأنيقاً يدوم لسنوات.",
+  },
+
+  "s.customcarpentry.t": { nl: "Maatwerk Timmerwerk", ar: "النجارة المخصصة" },
+  "s.customcarpentry.d": {
+    nl: "Elke ruimte is uniek. Daarom maken wij maatwerk meubels, kasten en houtconstructies volledig afgestemd op uw wensen en beschikbare ruimte. Functionaliteit, kwaliteit en design komen samen in één oplossing.",
+    ar: "كل مساحة فريدة من نوعها. لذا نصنع لك أثاثاً وخزائن وتراكيب خشبية مصممة بالكامل وفق احتياجاتك وأبعاد مساحتك. وظيفية وجودة وتصميم راقٍ في حل واحد متكامل.",
+  },
+
   "contact.formLead": {
     nl: "Laat ons weten wat u nodig heeft en wij nemen snel contact op.",
     ar: "أخبرنا بما تحتاجه وسنعاود الاتصال بك في أسرع وقت.",
