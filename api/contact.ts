@@ -35,7 +35,8 @@ export default async function handler(req: Req, res: Res) {
   const transporter = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
-    secure: smtpPort === 465,
+    secure: false,      // Office 365 uses STARTTLS on 587, not SSL
+    requireTLS: true,   // force STARTTLS upgrade
     auth: { user: smtpUser, pass: smtpPass },
   });
 
