@@ -35,7 +35,7 @@ export function Footer() {
   const open  = isOpenNow();
 
   return (
-    <footer className="bg-slate-950 text-slate-200 relative overflow-hidden">
+    <footer id="site-footer" className="bg-slate-950 text-slate-200 relative overflow-hidden">
 
       {/* decorative top accent */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange to-transparent opacity-60" />
@@ -80,7 +80,7 @@ export function Footer() {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/attarklusservice"
+              href="https://www.instagram.com/attar.klusservice"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-3 self-start"
@@ -90,7 +90,7 @@ export function Footer() {
               </div>
               <div>
                 <div className="text-white text-sm font-semibold group-hover:text-orange transition-colors">
-                  @attarklusservice
+                  @attar.klusservice
                 </div>
                 <div className="text-slate-500 text-xs">
                   {isAr ? "تابعنا على انستغرام" : "Volg ons op Instagram"}
