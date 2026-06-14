@@ -43,13 +43,13 @@ export function HowItWorks() {
   const isAr = lang === "ar";
 
   return (
-    <section className="py-24 px-6 lg:px-10 bg-white">
+    <section className="py-14 px-6 lg:px-10 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-2xl mx-auto"
+          className="text-center mb-10 max-w-2xl mx-auto"
         >
           <p className="text-orange text-xs font-bold uppercase tracking-[0.25em] mb-3">
             {isAr ? "العملية" : "Werkwijze"}

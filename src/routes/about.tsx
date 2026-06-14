@@ -90,7 +90,7 @@ function AboutPage() {
     <div className="bg-slate-50">
 
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="px-6 lg:px-10 py-20 bg-slate-50">
+      <section className="px-6 lg:px-10 py-12 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -108,7 +108,7 @@ function AboutPage() {
           </motion.div>
 
           {/* values */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             {values.map((v, i) => (
               <motion.div
                 key={i}
@@ -126,7 +126,7 @@ function AboutPage() {
           </div>
 
           {/* stats */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
             {[
               { n: "15+", l: t("about.stat1") },
               { n: "500+", l: t("about.stat2") },
@@ -149,13 +149,13 @@ function AboutPage() {
       </section>
 
       {/* ── TIMELINE ─────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10 bg-white">
+      <section className="py-14 px-6 lg:px-10 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <p className="text-orange text-xs font-bold uppercase tracking-[0.25em] mb-3">
               {isAr ? "مسيرتنا" : "Onze Geschiedenis"}
@@ -215,7 +215,7 @@ function AboutPage() {
       </section>
 
       {/* ── CREDENTIALS ──────────────────────────────── */}
-      <section className="py-16 px-6 lg:px-10 bg-slate-950">
+      <section className="py-12 px-6 lg:px-10 bg-slate-950">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

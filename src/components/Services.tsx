@@ -101,13 +101,13 @@ export function Services({ initial = 3 }: { initial?: number }) {
   const showLess = () => setCount(initial);
 
   return (
-    <section className="py-24 px-6 lg:px-10 bg-slate-50">
+    <section className="py-14 px-6 lg:px-10 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-2xl mx-auto"
+          className="text-center mb-10 max-w-2xl mx-auto"
         >
           <div className="inline-block px-4 py-2 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
             {t("services.title")}
@@ -118,7 +118,7 @@ export function Services({ initial = 3 }: { initial?: number }) {
           <div className="h-1 w-20 bg-orange mx-auto rounded-full" />
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="space-y-10">
           <AnimatePresence>
             {visible.map((s, i) => {
               const reverse = i % 2 === 1;
@@ -172,7 +172,7 @@ export function Services({ initial = 3 }: { initial?: number }) {
           </AnimatePresence>
         </div>
 
-        <div className="flex flex-col items-center mt-20 gap-4">
+        <div className="flex flex-col items-center mt-12 gap-4">
           {canMore && (
             <motion.button
               whileHover={{ y: -4 }}

@@ -66,13 +66,13 @@ export function Testimonials() {
   }, [pageCount]);
 
   return (
-    <section className="py-24 px-6 lg:px-10 bg-slate-50">
+    <section className="py-14 px-6 lg:px-10 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-2xl mx-auto"
+          className="text-center mb-10 max-w-2xl mx-auto"
         >
           <div className="inline-block px-4 py-2 rounded-full bg-orange/10 text-orange text-xs font-bold tracking-widest uppercase mb-5">
             {lang === "nl" ? "Klantbeoordelingen" : "آراء العملاء"}

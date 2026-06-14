@@ -22,8 +22,8 @@ export function Gallery() {
   const marquee2 = [...row2, ...row2];
 
   return (
-    <section className="py-24 bg-slate-950 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-14 text-center">
+    <section className="py-14 bg-slate-950 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-10 text-center">
         <p className="text-orange text-xs font-bold uppercase tracking-[0.25em] mb-3">
           {lang === "ar" ? "معرض الأعمال" : "Portfolio"}
         </p>

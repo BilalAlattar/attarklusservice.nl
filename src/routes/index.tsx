@@ -36,7 +36,7 @@ function Home() {
         <div className="absolute inset-0 bg-slate-950/50" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/20 to-transparent" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-28 lg:pt-32 pb-24 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 lg:pt-24 pb-14 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ function Home() {
               </Link>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-14 pt-10 border-t border-white/15 max-w-4xl">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-10 pt-8 border-t border-white/15 max-w-4xl">
               {[
                 { icon: Award, n: "15+", l: t("about.stat1") },
                 { icon: Shield, n: "500+", l: t("about.stat2") },
