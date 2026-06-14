@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, Award, Clock, Sparkles } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { Gallery } from "@/components/Gallery";
+import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
 import { ContactSection } from "@/components/ContactSection";
 import heroVideo from "@/assets/worker-demo.mp4";
@@ -117,6 +118,7 @@ function Home() {
       </section>
 
       <Gallery />
+      <HowItWorks />
       <Testimonials />
       <ContactSection />
     </>
